@@ -11,11 +11,20 @@
         <div class="title">
           <h3 align="center"><%= list.name %></h3>
           <hr>
-          <br>
-          <p>TASKS PLACEHOLDER</p>
-          <br>
           <%= link_to 'Edit List', edit_board_list_path(@board, list), class: "ui blue button inverted" %>
           <%= link_to 'Delete List', board_list_path(@board, list), method: :delete, class: "ui red button inverted" %>
+          <hr>
+            <% list.tasks.each do |task| %>
+              <h5><%= task.name %></h5>
+              <p>Due:  <%= task.date_due %></p>
+              <p>Done:  <%= task.date_done %></p>
+              <%= link_to 'Edit Task', edit_list_task_path(list, task) %>
+              <br>
+            <% end %>
+            <hr>
+            <%= link_to 'Add Task', new_list_task_path(list), class: "ui blue button inverted" %>
+          <br>
+          <hr>          
           <%# link_to 'Add Task', new_list_task_path(@list), class: "ui blue button inverted" %>
         </div>
       </div>

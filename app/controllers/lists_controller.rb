@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:edit, :update, :show, :destroy]
   def index
     @lists = @board.lists 
+    redirect_to board_path(@board)
   end
 
   def new
