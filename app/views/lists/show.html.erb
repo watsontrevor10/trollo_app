@@ -1,2 +1,16 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div class="ui cards">
+    <% @board.lists.each do |list| %>
+      <div class="ui blue card">
+        <div class="title">
+          <h3 align="center"><%= list.name %></h3>
+          <hr>
+          <br>
+          <p>TASKS PLACEHOLDER</p>
+          <br>
+          <%= link_to 'Edit List', edit_board_list_path(@board, list), class: "ui blue button inverted" %>
+          <%= link_to 'Delete List', board_list_path(@board, list), method: :delete, class: "ui red button inverted" %>
+          <%# link_to 'Add Task', new_list_task_path(@list), class: "ui blue button inverted" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
