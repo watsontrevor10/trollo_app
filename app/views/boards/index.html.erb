@@ -1,0 +1,9 @@
+<h1>My Boards</h1>
+
+<%= link_to 'Add Board', new_board_path, class: "ui blue button" %>
+
+<% @current_user.boards.each do |board| %>
+  <div>
+    <h2><%= link_to board.name, board_path(board) %></h2>
+  </div>
+<% end %>
