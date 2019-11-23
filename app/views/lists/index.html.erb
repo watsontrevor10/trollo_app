@@ -1,2 +1,24 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+<h1><%= @board.name %></h1>
+<br>
+<%= link_to 'Add List', new_board_list_path(@board), class: "ui blue button inverted" %>
+<%= link_to 'Edit Board', edit_board_path(@board), class: "ui blue button inverted" %>
+<br>
+<br>
+<hr>
+<div class="ui cards">
+  <% @board.lists.order(:priority).each do |list| %>
+    <div class="ui blue card">
+      <div class="title">
+        <h3><%= link_to list.name, list_tasks_path(list) %></h3>
+        <h4>Priority:  <%= list.priority %> </h4>
+      </div>
+      <br>
+  <%= link_to 'Edit List', edit_board_list_path(list.board_id, list), class: "ui blue button inverted" %>
+  <%= link_to 'Delete List', board_list_path(list.board_id, list), method: :delete, class: "ui red button inverted" %>
+    </div>
+  <% end %>
+</div>
+<br>  
+<%= link_to 'Back', boards_path, class: "ui button" %>
+<%= link_to 'Delete Board', board_path(@board), method: :delete, class: "ui red button inverted" %>
+

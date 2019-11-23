@@ -3,7 +3,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :edit, :destroy, :show]
 
   def index
-    @tasks = @list.tasks
+    # Active Record way
+    #@tasks = @list.tasks
+
+    # SQL way
+    @tasks = @list.tasks.all_tasks(@list.id)
   end
 
   def new
@@ -12,6 +16,7 @@ class TasksController < ApplicationController
 
   def create
     @task = @list.tasks.new(task_params)
+
     if @task.save
       redirect_to list_tasks_path(@list)
     else
@@ -24,7 +29,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to boards_path
+      redirect_to list_tasks_path(@list)
     else
       render :edit
     end
@@ -35,7 +40,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to boards_path
+    redirect_to list_tasks_path(@list)
   end
 
   private
@@ -49,6 +54,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :date_due, :date_done)
+    params.require(:task).permit(:name, :date_due, :date_done, :assigned, :priority)
   end
 end

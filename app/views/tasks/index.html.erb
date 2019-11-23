@@ -1,2 +1,26 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<h1><%= @list.name %></h1>
+<%= link_to 'Add Task', new_list_task_path(@list), class: "ui blue button inverted" %>
+<br>
+<hr>
+<div class="ui cards">
+  <% @list.tasks.order(:priority).each do |task| %>
+    <div class="ui card">
+      <div class="title">
+        <h3><%= task.name %></h3>
+      </div>
+      <div class="meta">
+        <%= task.priority %>
+      </div>
+      <div class="content">
+        <%= task.date_due %>
+      </div>
+      <div class="content">
+        <%= task.date_done %>
+      </div>
+      <%= link_to 'Edit Task', edit_list_task_path(@list, task), class: "ui blue button inverted" %>
+      <%= link_to 'Delete Task', list_task_path(@list, task), method: :delete, class: "ui red button inverted" %>
+    </div>
+  <% end %>
+</div>
+<%= link_to 'Back', list_task_path(@list, task), method: :delete, class: "ui red button inverted" %>
+

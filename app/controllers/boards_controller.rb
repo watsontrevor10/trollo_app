@@ -2,7 +2,11 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
 
   def index
-    @boards = current_user.boards
+    # Active Record way
+    #@boards = current_user.boards
+
+    # find_by_sql way
+    @boards = Board.all_boards(current_user.id)
   end
 
   def new
