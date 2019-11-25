@@ -9,18 +9,17 @@
         <h3><%= task.name %></h3>
       </div>
       <div class="meta">
-        <%= task.priority %>
+        Priority:  <%= task.priority %>
       </div>
       <div class="content">
-        <%= task.date_due %>
+        Date Due:  <%= task.date_due %>
       </div>
       <div class="content">
-        <%= task.date_done %>
+        Date Completed:  <%= task.date_done %>
       </div>
       <%= link_to 'Edit Task', edit_list_task_path(@list, task), class: "ui blue button inverted" %>
       <%= link_to 'Delete Task', list_task_path(@list, task), method: :delete, class: "ui red button inverted" %>
     </div>
   <% end %>
 </div>
-<%= link_to 'Back', list_task_path(@list, task), method: :delete, class: "ui red button inverted" %>
 

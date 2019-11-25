@@ -11,4 +11,24 @@ class List < ApplicationRecord
     )
   end
 
+  def user_filter(list_id)
+    @user_filter = nil
+
+    if @user_filter = @asc
+      Task.find_by_sql(
+        "SELECT *
+        FROM lists
+        WHERE lists.task_id = #{task_id}
+        ORDER BY prioirity ASC"
+      )
+    else @user_filter = @desc 
+      Task.find_by_sql(
+          "SELECT *
+          FROM lists
+          WHERE lists.task_id = #{task_id}
+          ORDER BY prioirity DESC"
+        )
+    end
+  end
+
 end

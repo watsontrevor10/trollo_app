@@ -22,7 +22,7 @@ class ListsController < ApplicationController
   end
 
   def update
-    if @board.lists.update(list_params)
+    if @list.update(list_params)
       redirect_to board_lists_path(@board)
     else
       render :edit
