@@ -10,10 +10,15 @@
   <div class="field">
     <%= f.label :date_done %>
     <%= f.date_field :date_done, placeholder: "Date Completed" %>
-  </div>
+  </div> 
+  <div class="field">
+    <%= f.label :list %>
+    <%= f.collection_select :list_id, List.order(:name), :id, :name, include_blank: true %>
+  </div> 
    <div class="field">
     <%= f.label :priority %>
     <%= f.select :priority, ['1. High', '2. Medium', '3. Low'], placeholder: "Priority" %>
   </div>
   <%= f.submit class: "ui blue button" %>
 <% end %>
+ 

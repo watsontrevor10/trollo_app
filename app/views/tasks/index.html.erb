@@ -1,5 +1,6 @@
 <h1><%= @list.name %></h1>
 <%= link_to 'Add Task', new_list_task_path(@list), class: "ui blue button inverted" %>
+<%= link_to 'Back', board_lists_path(@list.board_id), class: "ui blue button inverted" %>
 <br>
 <hr>
 <div class="ui cards">

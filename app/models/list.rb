@@ -11,6 +11,7 @@ class List < ApplicationRecord
     )
   end
 
+  # Experimenting with ways for users to select sorts for lists by priority
   def user_filter(list_id)
     @user_filter = nil
 
